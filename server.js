@@ -1,5 +1,5 @@
 const http = require("http");
-const { getProducts } = require("./controllers/productController");
+const { getProduct, getProducts } = require("./controllers/productController");
 const PORT = process.env.PORT || 5000;
 
 const server = http.createServer((req, res) => {
@@ -18,6 +18,12 @@ const server = http.createServer((req, res) => {
   //   3. with routing
   if (req.url === "/api/products" && req.method === "GET") {
     getProducts(req, res);
+  } else if (
+    req.url.match(/\/api\/products\/([0-9]+)/) &&
+    req.method === "GET"
+  ) {
+    const id = req.url.split("/")[3];
+    getProduct(req, res, id);
   } else {
     res.writeHead(404, {
       "Content-Type": "application/json",
