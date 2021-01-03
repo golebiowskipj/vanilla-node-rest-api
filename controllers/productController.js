@@ -60,8 +60,37 @@ async function getProduct(req, res, id) {
   }
 }
 
+// @desc    Updates existing product
+// @route   PUT /api/products/:id
+async function updateProduct(req, res, id) {
+  const product = await Product.findById(id);
+
+  if (!product) {
+    res.writeHead(404, {
+      "Content-Type": "application/json",
+    });
+    res.end(JSON.stringify({ message: "Product not found" }));
+  } else {
+    const body = await getPostData(req);
+
+    const { title, description, price } = JSON.parse(body);
+
+    const productData = {
+      title: title || product.title,
+      description: description || product.description,
+      price: price || product.price,
+    };
+
+    const updatedProduct = await Product.update(id, productData);
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(updatedProduct));
+  }
+}
+
 module.exports = {
   createProduct,
   getProduct,
   getProducts,
+  updateProduct,
 };

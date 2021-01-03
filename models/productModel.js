@@ -25,8 +25,18 @@ function findById(id) {
   });
 }
 
+function update(id, data) {
+  return new Promise((resolve, reject) => {
+    const index = products.findIndex((p) => p.id === id);
+    products[index] = { id, ...data };
+    writeDataToFile("./data/products.json", products);
+    resolve(products[index]);
+  });
+}
+
 module.exports = {
   create,
   findAll,
   findById,
+  update,
 };
