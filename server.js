@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
   //   res.end(JSON.stringify(products));
 
   //   3. with routing
-  if (req.url === "/api/products") {
+  if (req.url === "/api/products" && req.method === "GET") {
     res.writeHead(200, {
       "Content-Type": "application/json",
     });
