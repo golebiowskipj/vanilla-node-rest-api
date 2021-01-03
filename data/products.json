@@ -1,14 +1,9 @@
 [
   {
     "id": "1",
+    "name": "Airpods Wireless Bluetooth Headphones",
     "description": "Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working",
-    "price": 666666666
-  },
-  {
-    "id": "2",
-    "name": "iPhone 11 Pro 256GB Memory",
-    "description": "Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life",
-    "price": 599.99
+    "price": 89.99
   },
   {
     "id": "3",
@@ -46,11 +41,5 @@
     "price": 100,
     "id": "a5e3d036-e79f-469c-8f64-bc06a42ed3f3"
   },
-  { "id": "f6a23b91-02cf-46a6-8f61-5ea41929ce22" },
-  {
-    "title": "witam tytul",
-    "description": "witam opis",
-    "price": 666,
-    "id": "ebcf2400-af32-4d02-a342-fc9891114838"
-  }
+  { "id": "f6a23b91-02cf-46a6-8f61-5ea41929ce22" }
 ]

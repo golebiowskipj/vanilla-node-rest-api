@@ -24,6 +24,29 @@ async function createProduct(req, res) {
   }
 }
 
+// @desc    Delete single product by id
+// @route   DELETE /api/products/:id
+async function deleteProduct(req, res, id) {
+  try {
+    const product = await Product.findById(id);
+
+    if (!product) {
+      res.writeHead(404, {
+        "Content-Type": "application/json",
+      });
+      res.end(JSON.stringify({ message: "Product not found" }));
+    } else {
+      await Product.remove(id);
+      res.writeHead(200, {
+        "Content-Type": "application/json",
+      });
+      res.end(JSON.stringify({ message: `Product with id = ${id} deleted` }));
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // @desc    Gets all products
 // @route   GET /api/products
 async function getProducts(req, res) {
@@ -90,6 +113,7 @@ async function updateProduct(req, res, id) {
 
 module.exports = {
   createProduct,
+  deleteProduct,
   getProduct,
   getProducts,
   updateProduct,
