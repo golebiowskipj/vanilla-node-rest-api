@@ -22,6 +22,11 @@ const server = http.createServer((req, res) => {
       "Content-Type": "application/json",
     });
     res.end(JSON.stringify(products));
+  } else {
+    res.writeHead(404, {
+      "Content-Type": "application/json",
+    });
+    res.end(JSON.stringify({ message: "Route not found" }));
   }
 });
 
