@@ -1,4 +1,16 @@
 const products = require("../data/products");
+const { v4: uuidv4 } = require("uuid");
+
+const { writeDataToFile } = require("../utils");
+
+function create(product) {
+  return new Promise((resolve, reject) => {
+    const newProduct = { ...product, id: uuidv4() };
+    products.push(newProduct);
+    writeDataToFile("./data/products.json", products);
+    resolve(newProduct);
+  });
+}
 
 function findAll() {
   return new Promise((resolve, reject) => {
@@ -14,6 +26,7 @@ function findById(id) {
 }
 
 module.exports = {
+  create,
   findAll,
   findById,
 };
